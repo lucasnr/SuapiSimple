@@ -1,0 +1,21 @@
+{
+	"id": 214017,
+	"matricula": "20161164010023",
+	"nome_usual": "Lucas Nascimento",
+	"email": "lucas.ribeiro@academico.ifrn.edu.br",
+	"url_foto_75x100": "/media/alunos/75x100/180600.jpg",
+	"tipo_vinculo": "Aluno",
+	"vinculo": {
+		"matricula": "20161164010023",
+		"nome": "Lucas do Nascimento Ribeiro",
+		"curso": "Técnico de Nível Médio em Informática",
+		"campus": "SGA",
+		"situacao": "Matriculado",
+		"cota_sistec": "Escola Pública",
+		"cota_mec": "Oriundo de escola pública, com renda superior a 1,5 S.M. e declarado preto, pardo ou indígena (PPI)",
+		"situacao_sistemica": "Matriculado no SUAP",
+		"matricula_regular": false,
+		"linha_pesquisa": null,
+		"curriculo_lattes": "http://lattes.cnpq.br/9679915989122759"
+	}
+}
