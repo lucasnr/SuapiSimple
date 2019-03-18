@@ -2,28 +2,26 @@ package br.edu.ifrn.suap.model;
 
 import com.google.gson.annotations.SerializedName;
 
-import br.edu.ifrn.suap.SUAPClient;
+import br.edu.ifrn.suap.ClienteSUAP;
 
 public class UsuarioSUAP {
 
 	@SerializedName("id")
-	private Integer suapId;
-	private String matricula;
-	private String email;
+	protected Integer suapId;
+	protected String matricula;
+	protected String email;
 	@SerializedName("nome_usual")
-	private String nomeUsual;
+	protected String nomeUsual;
 	@SerializedName("url_foto_75x100")
-	private String urlFoto;
+	protected String urlFoto;
 	@SerializedName("tipo_vinculo")
-	private String tipoVinculo;
-	private VinculoSUAP vinculo;
-	private CursoSUAP curso;
+	protected String tipoVinculo;
+	protected VinculoSUAP vinculo;
 
-	private SUAPClient suapClient;
+	protected ClienteSUAP clienteSUAP;
 
-	public UsuarioSUAP(SUAPClient suapClient) {
-		super();
-		this.suapClient = suapClient;
+	public UsuarioSUAP(ClienteSUAP clienteSUAP) {
+		this.clienteSUAP = clienteSUAP;
 	}
 
 	public void ajustaURL() {
@@ -60,24 +58,13 @@ public class UsuarioSUAP {
 		return vinculo;
 	}
 
-	public SUAPClient getSuapClient() {
-		return suapClient;
+	public ClienteSUAP getClienteSUAP() {
+		return clienteSUAP;
 	}
 
-	public void setSuapClient(SUAPClient suapClient) {
-		if (this.suapClient == null)
-			this.suapClient = suapClient;
-	}
-
-	public CursoSUAP getCurso() {
-		if (this.curso == null) {
-			// O código do curso está presente na matricula
-			// Ex: 20161164010023 -> 20161(16401)0023
-			String cursoId = matricula.substring(5, 10);
-			this.curso = this.suapClient.getCurso(cursoId);
-		}
-
-		return this.curso;
+	public void setClienteSUAP(ClienteSUAP clienteSUAP) {
+		if (this.clienteSUAP == null) // garante que só será atribuido uma única vez
+			this.clienteSUAP = clienteSUAP;
 	}
 
 	@Override
@@ -85,5 +72,5 @@ public class UsuarioSUAP {
 		return "SUAPUsuario [suapId=" + suapId + ", matricula=" + matricula + ", email=" + email + ", nomeUsual="
 				+ nomeUsual + ", urlFoto=" + urlFoto + ", tipoVinculo=" + tipoVinculo + "]";
 	}
-
+	
 }

@@ -1,9 +1,7 @@
-C:\Users\20161164010023\Documents\git\SuapiSimple\src\main\java\br\edu\ifrn\suap\SUAPTokenJSONHandler.java
-C:\Users\20161164010023\Documents\git\SuapiSimple\src\main\java\br\edu\ifrn\suap\model\VinculoSUAP.java
-C:\Users\20161164010023\Documents\git\SuapiSimple\src\main\java\br\edu\ifrn\suap\gson\GsonUtil.java
-C:\Users\20161164010023\Documents\git\SuapiSimple\src\main\java\br\edu\ifrn\suap\model\CursoSUAP.java
-C:\Users\20161164010023\Documents\git\SuapiSimple\src\main\java\br\edu\ifrn\suap\gson\GsonIgnoreStrategy.java
-C:\Users\20161164010023\Documents\git\SuapiSimple\src\main\java\br\edu\ifrn\suap\model\UsuarioSUAP.java
-C:\Users\20161164010023\Documents\git\SuapiSimple\src\main\java\br\edu\ifrn\suap\gson\GsonIgnore.java
-C:\Users\20161164010023\Documents\git\SuapiSimple\src\main\java\br\edu\ifrn\suap\model\ComponenteCurricularSUAP.java
-C:\Users\20161164010023\Documents\git\SuapiSimple\src\main\java\br\edu\ifrn\suap\SUAPClient.java
+C:\Users\20161164010023\Documents\workspace\suapi-simple\src\main\java\br\edu\ifrn\suap\JSONHandler.java
+C:\Users\20161164010023\Documents\workspace\suapi-simple\src\main\java\br\edu\ifrn\suap\model\UsuarioSUAP.java
+C:\Users\20161164010023\Documents\workspace\suapi-simple\src\main\java\br\edu\ifrn\suap\model\CursoSUAP.java
+C:\Users\20161164010023\Documents\workspace\suapi-simple\src\main\java\br\edu\ifrn\suap\model\AlunoSUAP.java
+C:\Users\20161164010023\Documents\workspace\suapi-simple\src\main\java\br\edu\ifrn\suap\model\ComponenteCurricularSUAP.java
+C:\Users\20161164010023\Documents\workspace\suapi-simple\src\main\java\br\edu\ifrn\suap\ClienteSUAP.java
+C:\Users\20161164010023\Documents\workspace\suapi-simple\src\main\java\br\edu\ifrn\suap\model\VinculoSUAP.java
