@@ -16,7 +16,7 @@ public class CursoSUAP {
 	private String naturezaParticipacao;
 	private String eixo;
 	private String modalidade;
-	private String cordenador;
+	private String coordenador;
 	@SerializedName("componentes_curriculares")
 	private List<ComponenteCurricularSUAP> componentesCurriculares;
 
@@ -48,8 +48,8 @@ public class CursoSUAP {
 		return modalidade;
 	}
 
-	public String getCordenador() {
-		return cordenador;
+	public String getCoordenador() {
+		return coordenador;
 	}
 
 	public List<ComponenteCurricularSUAP> getComponentesCurriculares() {
@@ -58,10 +58,9 @@ public class CursoSUAP {
 
 	@Override
 	public String toString() {
-		return "Curso [codigo=" + codigo + ", descricao=" + descricao + ", diretoria=" + diretoria + ", cargaHoraria="
-				+ cargaHoraria + ", naturezaParticipacao=" + naturezaParticipacao + ", eixo=" + eixo + ", modalidade="
-				+ modalidade + ", cordenador=" + cordenador + ", componentesCurriculares=" + componentesCurriculares
-				+ "]";
+		return "CursoSUAP [codigo=" + codigo + ", descricao=" + descricao + ", diretoria=" + diretoria
+				+ ", cargaHoraria=" + cargaHoraria + ", naturezaParticipacao=" + naturezaParticipacao + ", eixo=" + eixo
+				+ ", modalidade=" + modalidade + ", coordenador=" + coordenador + "]";
 	}
 
 }
