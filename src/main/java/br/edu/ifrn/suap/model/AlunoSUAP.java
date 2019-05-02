@@ -4,6 +4,8 @@ import br.edu.ifrn.suap.ClienteSUAP;
 
 public class AlunoSUAP extends UsuarioSUAP{
 
+	private VinculoAlunoSUAP vinculo;
+	
 	private CursoSUAP curso;
 	
 	public AlunoSUAP(ClienteSUAP suapClient) {
@@ -20,4 +22,9 @@ public class AlunoSUAP extends UsuarioSUAP{
 
 		return this.curso;
 	}
+
+	public VinculoAlunoSUAP getVinculo() {
+		return vinculo;
+	}
+	
 }

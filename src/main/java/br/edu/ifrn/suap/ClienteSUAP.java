@@ -118,6 +118,7 @@ public class ClienteSUAP {
 		// Obtem as informações básicas do usuário logado no SUAP
 		String url = "https://suap.ifrn.edu.br/api/v2/minhas-informacoes/meus-dados/";
 		String meusDados = doGet(url);
+		System.out.println(meusDados);
 		Gson gson = new Gson();
 		UsuarioSUAP usuario = gson.fromJson(meusDados, clazz);
 		usuario.ajustaURL();
