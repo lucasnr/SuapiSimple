@@ -16,7 +16,7 @@ public class VinculoServidorSUAP {
 	private String setorSUAP;
 
 	@SerializedName("setor_siape")
-	private String setorSiape;
+	private String setorSIAPE;
 
 	@SerializedName("jornada_trabalho")
 	private String jornadaTrabalho;
@@ -57,8 +57,8 @@ public class VinculoServidorSUAP {
 		return setorSUAP;
 	}
 
-	public String getSetorSiape() {
-		return setorSiape;
+	public String getSetorSIAPE() {
+		return setorSIAPE;
 	}
 
 	public String getJornadaTrabalho() {
@@ -100,7 +100,7 @@ public class VinculoServidorSUAP {
 	@Override
 	public String toString() {
 		return "VinculoServidorSUAP [matricula=" + matricula + ", nome=" + nome + ", cargo=" + cargo + ", setorSUAP="
-				+ setorSUAP + ", setorSiape=" + setorSiape + ", jornadaTrabalho=" + jornadaTrabalho + ", funcao="
+				+ setorSUAP + ", setorSiape=" + setorSIAPE + ", jornadaTrabalho=" + jornadaTrabalho + ", funcao="
 				+ Arrays.toString(funcao) + ", campus=" + campus + ", email=" + email + ", telefonesInstitucionais="
 				+ Arrays.toString(telefonesInstitucionais) + ", categoria=" + categoria + ", disciplinaIngresso="
 				+ disciplinaIngresso + ", urlFoto=" + urlFoto + ", curriculoLattes=" + curriculoLattes + "]";

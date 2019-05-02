@@ -15,10 +15,10 @@ public class VinculoAlunoSUAP {
 	private String situacao;
 	
 	@SerializedName("cota_sistec")
-	private String cotaSistec;
+	private String cotaSISTEC;
 	
 	@SerializedName("cota_mec")
-	private String cotaMec;
+	private String cotaMEC;
 	
 	@SerializedName("situacao_sistemica")
 	private String situacaoSistemica;
@@ -52,12 +52,12 @@ public class VinculoAlunoSUAP {
 		return situacao;
 	}
 
-	public String getCotaSistec() {
-		return cotaSistec;
+	public String getCotaSISTEC() {
+		return cotaSISTEC;
 	}
 
-	public String getCotaMec() {
-		return cotaMec;
+	public String getCotaMEC() {
+		return cotaMEC;
 	}
 
 	public String getSituacaoSistemica() {
@@ -79,7 +79,7 @@ public class VinculoAlunoSUAP {
 	@Override
 	public String toString() {
 		return "Vinculo [matricula=" + matricula + ", nome=" + nome + ", curso=" + curso + ", campus=" + campus
-				+ ", situacao=" + situacao + ", cotaSistec=" + cotaSistec + ", cotaMec=" + cotaMec
+				+ ", situacao=" + situacao + ", cotaSistec=" + cotaSISTEC + ", cotaMec=" + cotaMEC
 				+ ", situacaoSistemica=" + situacaoSistemica + ", matriculaRegular=" + matriculaRegular
 				+ ", linhaPesquisa=" + linhaPesquisa + ", curriculoLattes=" + curriculoLattes + "]";
 	}

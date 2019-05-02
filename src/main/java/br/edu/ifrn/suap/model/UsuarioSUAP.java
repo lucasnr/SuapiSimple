@@ -16,14 +16,14 @@ public class UsuarioSUAP {
 	@SerializedName("nome_usual")
 	protected String nomeUsual;
 
-	protected String cpf;
+	protected String CPF;
 
-	protected String rg;
+	protected String RG;
 
 	protected String[] filiacao;
 
 	@SerializedName("data_nascimento")
-	protected String dataNascimento;
+	protected String dataDeNascimento;
 
 	protected String naturalidade;
 
@@ -48,8 +48,12 @@ public class UsuarioSUAP {
 	}
 
 	public void ajustaURL() {
-		if (!this.urlFoto.startsWith("https://suap.ifrn.edu.br")) {
-			this.urlFoto = "https://suap.ifrn.edu.br" + urlFoto;
+		String inicio = "https://suap.ifrn.edu.br";
+		if (!this.urlFoto.startsWith(inicio)) {
+			this.urlFoto = inicio.concat(urlFoto);
+		}
+		if (!this.urlFotoGrande.startsWith(inicio)) {
+			this.urlFotoGrande = inicio.concat(urlFotoGrande);
 		}
 	}
 
@@ -77,20 +81,20 @@ public class UsuarioSUAP {
 		return tipoVinculo;
 	}
 
-	public String getCpf() {
-		return cpf;
+	public String getCPF() {
+		return CPF;
 	}
 
-	public String getRg() {
-		return rg;
+	public String getRG() {
+		return RG;
 	}
 
 	public String[] getFiliacao() {
 		return filiacao;
 	}
 
-	public String getDataNascimento() {
-		return dataNascimento;
+	public String getDataDeNascimento() {
+		return dataDeNascimento;
 	}
 
 	public String getNaturalidade() {
@@ -111,15 +115,17 @@ public class UsuarioSUAP {
 
 	public void defineClienteSUAP(ClienteSUAP clienteSUAP) {
 		// garante que só será atribuido uma única vez
-		this.clienteSUAP = clienteSUAP;
+		if (this.clienteSUAP == null)
+			this.clienteSUAP = clienteSUAP;
 	}
 
 	@Override
 	public String toString() {
 		return "UsuarioSUAP [suapId=" + suapId + ", matricula=" + matricula + ", nomeUsual=" + nomeUsual + ", cpf="
-				+ cpf + ", rg=" + rg + ", filiacao=" + Arrays.toString(filiacao) + ", dataNascimento=" + dataNascimento
-				+ ", naturalidade=" + naturalidade + ", tipoSanguineo=" + tipoSanguineo + ", email=" + email
-				+ ", urlFoto=" + urlFoto + ", urlFotoGrande=" + urlFotoGrande + ", tipoVinculo=" + tipoVinculo + "]";
+				+ CPF + ", rg=" + RG + ", filiacao=" + Arrays.toString(filiacao) + ", dataNascimento="
+				+ dataDeNascimento + ", naturalidade=" + naturalidade + ", tipoSanguineo=" + tipoSanguineo + ", email="
+				+ email + ", urlFoto=" + urlFoto + ", urlFotoGrande=" + urlFotoGrande + ", tipoVinculo=" + tipoVinculo
+				+ "]";
 	}
 
 }

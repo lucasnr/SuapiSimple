@@ -1,7 +1,9 @@
-C:\Users\20161164010023\Documents\git\suapi-simple\src\main\java\br\edu\ifrn\suap\ClienteSUAP.java
-C:\Users\20161164010023\Documents\git\suapi-simple\src\main\java\br\edu\ifrn\suap\model\ComponenteCurricularSUAP.java
-C:\Users\20161164010023\Documents\git\suapi-simple\src\main\java\br\edu\ifrn\suap\util\JSONHandler.java
-C:\Users\20161164010023\Documents\git\suapi-simple\src\main\java\br\edu\ifrn\suap\model\UsuarioSUAP.java
-C:\Users\20161164010023\Documents\git\suapi-simple\src\main\java\br\edu\ifrn\suap\model\VinculoSUAP.java
-C:\Users\20161164010023\Documents\git\suapi-simple\src\main\java\br\edu\ifrn\suap\model\CursoSUAP.java
-C:\Users\20161164010023\Documents\git\suapi-simple\src\main\java\br\edu\ifrn\suap\model\AlunoSUAP.java
+C:\Users\20161164010023\Documents\GitHub\suapi-simple\src\main\java\br\edu\ifrn\suap\model\CursoSUAP.java
+C:\Users\20161164010023\Documents\GitHub\suapi-simple\src\main\java\br\edu\ifrn\suap\ClienteSUAP.java
+C:\Users\20161164010023\Documents\GitHub\suapi-simple\src\main\java\br\edu\ifrn\suap\model\VinculoAlunoSUAP.java
+C:\Users\20161164010023\Documents\GitHub\suapi-simple\src\main\java\br\edu\ifrn\suap\model\VinculoServidorSUAP.java
+C:\Users\20161164010023\Documents\GitHub\suapi-simple\src\main\java\br\edu\ifrn\suap\model\AlunoSUAP.java
+C:\Users\20161164010023\Documents\GitHub\suapi-simple\src\main\java\br\edu\ifrn\suap\model\ComponenteCurricularSUAP.java
+C:\Users\20161164010023\Documents\GitHub\suapi-simple\src\main\java\br\edu\ifrn\suap\util\JSONHandler.java
+C:\Users\20161164010023\Documents\GitHub\suapi-simple\src\main\java\br\edu\ifrn\suap\model\ServidorSUAP.java
+C:\Users\20161164010023\Documents\GitHub\suapi-simple\src\main\java\br\edu\ifrn\suap\model\UsuarioSUAP.java
