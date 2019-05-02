@@ -84,4 +84,5 @@ public class VinculoAlunoSUAP {
 				+ ", linhaPesquisa=" + linhaPesquisa + ", curriculoLattes=" + curriculoLattes + "]";
 	}
 
+	
 }

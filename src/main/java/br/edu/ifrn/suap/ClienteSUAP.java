@@ -18,6 +18,7 @@ import com.google.gson.Gson;
 
 import br.edu.ifrn.suap.model.CursoSUAP;
 import br.edu.ifrn.suap.model.UsuarioSUAP;
+import br.edu.ifrn.suap.util.JSONHandler;
 
 /**
  * Classe que representa um cliente do SUAP. Esta classe é responsável por fazer
@@ -106,8 +107,9 @@ public class ClienteSUAP {
 	 * Retorna um objeto java parametizado do cliente, sendo o seu tipo o que for
 	 * enviado como parametro da chamada (Aluno, Servidor)
 	 *
-	 * @param clazz Classe que herde UsuarioSUAP
+	 * @param clazz Classe que herde de UsuarioSUAP
 	 * @since 1.1
+	 * @return AlunoSUAP ou ServidorSUAP
 	 */
 	@SuppressWarnings("unchecked")
 	public <T extends UsuarioSUAP> T getUsuario(Class<T> clazz) {
@@ -118,22 +120,12 @@ public class ClienteSUAP {
 		// Obtem as informações básicas do usuário logado no SUAP
 		String url = "https://suap.ifrn.edu.br/api/v2/minhas-informacoes/meus-dados/";
 		String meusDados = doGet(url);
-		System.out.println(meusDados);
 		Gson gson = new Gson();
 		UsuarioSUAP usuario = gson.fromJson(meusDados, clazz);
 		usuario.ajustaURL();
-		usuario.setClienteSUAP(this);
+		usuario.defineClienteSUAP(this);
+		
 		return (T) usuario;
-	}
-
-	/**
-	 * Retorna um objeto java do usuário deste cliente, com os dados da requisição
-	 * ao banco de dados do SUAP
-	 * 
-	 * @since 1.0
-	 */
-	public UsuarioSUAP getUsuario() {
-		return getUsuario(UsuarioSUAP.class);
 	}
 
 	/**
@@ -151,11 +143,11 @@ public class ClienteSUAP {
 	}
 
 	/**
-	 * Faz uma requisição do tipo GET à alguma URL, e retorna um JSON vindo da
-	 * resposta da requisição
+	 * Faz uma requisição do tipo GET à alguma URL
 	 * 
 	 * @since 1.0
 	 * @param url URL à qual se deseja fazer uma requisição GET
+	 * @return A String contendo a resposta, em JSON, da requisição
 	 */
 	protected String doGet(String url) {
 		CloseableHttpClient httpclient = HttpClients.createDefault();
@@ -187,6 +179,8 @@ public class ClienteSUAP {
 	 * objeto, as credenciais foram informadas corretamente.
 	 * 
 	 * @since 1.0
+	 * @return true se o usuário possue um token de autenticação válido ou false se
+	 *         a autenticação não teve sucesso
 	 */
 	public boolean isAutenticado() {
 		return this.TOKEN != null;

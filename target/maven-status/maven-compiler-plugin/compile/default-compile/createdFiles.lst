@@ -1,7 +1,7 @@
 br\edu\ifrn\suap\ClienteSUAP.class
 br\edu\ifrn\suap\model\CursoSUAP.class
+br\edu\ifrn\suap\util\JSONHandler.class
 br\edu\ifrn\suap\model\AlunoSUAP.class
 br\edu\ifrn\suap\model\VinculoSUAP.class
-br\edu\ifrn\suap\JSONHandler.class
 br\edu\ifrn\suap\model\UsuarioSUAP.class
 br\edu\ifrn\suap\model\ComponenteCurricularSUAP.class

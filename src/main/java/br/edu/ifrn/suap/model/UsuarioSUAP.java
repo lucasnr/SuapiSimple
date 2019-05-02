@@ -109,9 +109,9 @@ public class UsuarioSUAP {
 		return clienteSUAP;
 	}
 
-	public void setClienteSUAP(ClienteSUAP clienteSUAP) {
-		if (this.clienteSUAP == null) // garante que só será atribuido uma única vez
-			this.clienteSUAP = clienteSUAP;
+	public void defineClienteSUAP(ClienteSUAP clienteSUAP) {
+		// garante que só será atribuido uma única vez
+		this.clienteSUAP = clienteSUAP;
 	}
 
 	@Override
