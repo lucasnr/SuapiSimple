@@ -39,8 +39,7 @@ public class ClienteSUAP {
 	private String TOKEN;
 
 	/**
-	 * A string de autenticação deste cliente, usada para realizar requisições ao
-	 * SUAP
+	 * A autenticação deste cliente, usada para realizar requisições ao SUAP
 	 * 
 	 * @since 1.0
 	 */
@@ -105,11 +104,11 @@ public class ClienteSUAP {
 
 	/**
 	 * Retorna um objeto java parametizado do cliente, sendo o seu tipo o que for
-	 * enviado como parametro da chamada (Aluno, Servidor)
+	 * enviado como parâmetro da chamada (Aluno, Servidor)
 	 *
 	 * @param clazz Classe que herde de UsuarioSUAP
-	 * @since 1.1
 	 * @return AlunoSUAP ou ServidorSUAP
+	 * @since 1.1
 	 */
 	@SuppressWarnings("unchecked")
 	public <T extends UsuarioSUAP> T getUsuario(Class<T> clazz) {
@@ -124,7 +123,7 @@ public class ClienteSUAP {
 		UsuarioSUAP usuario = gson.fromJson(meusDados, clazz);
 		usuario.ajustaURL();
 		usuario.defineClienteSUAP(this);
-		
+
 		return (T) usuario;
 	}
 
@@ -133,6 +132,7 @@ public class ClienteSUAP {
 	 * Curso
 	 * 
 	 * @param codigo O codigo do curso no SUAP
+	 * @return O objeto de CursoSUAP
 	 */
 	public final CursoSUAP getCurso(String codigo) {
 		String url = "https://suap.ifrn.edu.br/api/v2/edu/cursos/" + codigo + "/";
@@ -147,7 +147,7 @@ public class ClienteSUAP {
 	 * 
 	 * @since 1.0
 	 * @param url URL à qual se deseja fazer uma requisição GET
-	 * @return A String contendo a resposta, em JSON, da requisição
+	 * @return A {@link String} contendo a resposta, em JSON, da requisição
 	 */
 	protected String doGet(String url) {
 		CloseableHttpClient httpclient = HttpClients.createDefault();
@@ -179,8 +179,8 @@ public class ClienteSUAP {
 	 * objeto, as credenciais foram informadas corretamente.
 	 * 
 	 * @since 1.0
-	 * @return true se o usuário possue um token de autenticação válido ou false se
-	 *         a autenticação não teve sucesso
+	 * @return true se o usuário possue um token de autenticação válido <br>
+	 *         false se a autenticação não teve sucesso
 	 */
 	public boolean isAutenticado() {
 		return this.TOKEN != null;
