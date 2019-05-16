@@ -6,27 +6,80 @@ import com.google.gson.annotations.SerializedName;
 
 import br.edu.ifrn.suap.ClienteSUAP;
 
+/**
+ * Classe pai de todos os usuários com algum vinculo no SUAP
+ * 
+ * @author Lucas do Nascimento Ribeiro
+ * @since 1.0
+ * @version 1.1
+ */
 public class UsuarioSUAP {
 
+	/**
+	 * ID único deste usuário no SUAP
+	 * 
+	 * @since 1.0
+	 */
 	@SerializedName("id")
 	protected Integer suapId;
 
+	/**
+	 * Matrícula única deste usuário no SUAP
+	 * 
+	 * @since 1.0
+	 */
 	protected String matricula;
 
+	/**
+	 * Nome usual deste usuário usado no SUAP frequentemente
+	 * 
+	 * @since 1.0
+	 */
 	@SerializedName("nome_usual")
 	protected String nomeUsual;
 
+	/**
+	 * CPF deste usuário
+	 * 
+	 * @since 1.1
+	 */
 	protected String CPF;
 
+	/**
+	 * RG deste usuário
+	 * 
+	 * @since 1.1
+	 */
 	protected String RG;
 
+	/**
+	 * Array de {@link String} contendo a filiação deste usuário
+	 * 
+	 * @since 1.1
+	 */
 	protected String[] filiacao;
 
+
+	/**
+	 * Data de nascimento em {@link String} deste usuário
+	 * 
+	 * @since 1.1
+	 */
 	@SerializedName("data_nascimento")
 	protected String dataDeNascimento;
 
+	/**
+	 * Naturalidade deste usuário
+	 * 
+	 * @since 1.1
+	 */
 	protected String naturalidade;
 
+	/**
+	 * Tipo sanguíneo deste usuário
+	 * 
+	 * @since 1.1
+	 */
 	@SerializedName("tipo_sanguineo")
 	protected String tipoSanguineo;
 
