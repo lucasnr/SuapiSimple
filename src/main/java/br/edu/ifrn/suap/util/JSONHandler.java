@@ -21,6 +21,7 @@ public class JSONHandler implements ResponseHandler<String> {
 	public String handleResponse(HttpResponse response) throws ClientProtocolException, IOException {
 		HttpEntity entity = response.getEntity();
 		String jsonString = EntityUtils.toString(entity);
+//		System.out.println("\n\n\nJSON HANDLER\n\n" + jsonString + "\n\n\n"); toggle to see json
 		return jsonString;
 	}
 
