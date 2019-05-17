@@ -252,5 +252,9 @@ public class ClienteSUAP {
 	public boolean isAutenticado() {
 		return this.TOKEN != null;
 	}
+	
+	public String getTOKEN() {
+		return TOKEN;
+	}
 
 }
