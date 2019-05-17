@@ -1,4 +1,4 @@
-package br.edu.ifrn.suap.model;
+package br.edu.ifrn.suapi.model;
 
 /**
  * Classe modelo de um usuário do SUAP com vinculo do tipo Servidor

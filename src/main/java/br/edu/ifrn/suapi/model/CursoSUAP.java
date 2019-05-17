@@ -1,4 +1,4 @@
-package br.edu.ifrn.suap.model;
+package br.edu.ifrn.suapi.model;
 
 import java.util.Collections;
 import java.util.List;

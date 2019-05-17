@@ -1,4 +1,4 @@
-package br.edu.ifrn.suap.model;
+package br.edu.ifrn.suapi.model;
 
 /**
  * Classe modelo de um componente curricular ou disciplina do SUAP

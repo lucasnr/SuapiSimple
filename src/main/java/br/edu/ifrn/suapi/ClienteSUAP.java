@@ -1,4 +1,4 @@
-package br.edu.ifrn.suap;
+package br.edu.ifrn.suapi;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,9 +16,9 @@ import org.apache.http.message.BasicNameValuePair;
 
 import com.google.gson.Gson;
 
-import br.edu.ifrn.suap.model.CursoSUAP;
-import br.edu.ifrn.suap.model.UsuarioSUAP;
-import br.edu.ifrn.suap.util.JSONHandler;
+import br.edu.ifrn.suapi.model.CursoSUAP;
+import br.edu.ifrn.suapi.model.UsuarioSUAP;
+import br.edu.ifrn.suapi.util.JSONHandler;
 
 /**
  * Classe que representa um cliente do SUAP. Esta classe é responsável por fazer

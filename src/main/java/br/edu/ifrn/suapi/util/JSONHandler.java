@@ -1,4 +1,4 @@
-package br.edu.ifrn.suap.util;
+package br.edu.ifrn.suapi.util;
 
 import java.io.IOException;
 

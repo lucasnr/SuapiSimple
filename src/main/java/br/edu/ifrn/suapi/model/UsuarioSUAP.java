@@ -1,11 +1,11 @@
-package br.edu.ifrn.suap.model;
+package br.edu.ifrn.suapi.model;
 
 import java.util.Arrays;
 import java.util.Date;
 
 import com.google.gson.annotations.SerializedName;
 
-import br.edu.ifrn.suap.ClienteSUAP;
+import br.edu.ifrn.suapi.ClienteSUAP;
 
 /**
  * Classe pai de todos os usuários com algum vinculo no SUAP
