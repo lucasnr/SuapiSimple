@@ -2,50 +2,75 @@ package br.edu.ifrn.suap.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class VinculoAlunoSUAP {
+/**
+ * Classe modelo que representa um vinculo de um aluno com o SUAP
+ * 
+ * @author Lucas do Nascimento Ribeiro
+ * @since 1.1
+ * @version 1.1
+ */
+public class VinculoAlunoSUAP extends VinculoSUAP {
 
-	private String matricula;
-	
-	private String nome;
-	
+	/**
+	 * O nome do curso do aluno com este vinculo
+	 * 
+	 * @since 1.1
+	 */
 	private String curso;
-	
-	private String campus;
-	
+
+	/**
+	 * A situação do aluno com este vinculo
+	 * 
+	 * @since 1.1
+	 */
 	private String situacao;
-	
+
+	/**
+	 * A cota SISTEC do aluno com este vinculo
+	 * 
+	 * @since 1.1
+	 */
 	@SerializedName("cota_sistec")
 	private String cotaSISTEC;
-	
+
+	/**
+	 * A cota MEC do aluno com este vinculo
+	 * 
+	 * @since 1.1
+	 */
 	@SerializedName("cota_mec")
 	private String cotaMEC;
-	
+
+	/**
+	 * A situação sistemica do aluno com este vinculo
+	 * 
+	 * @since 1.1
+	 */
 	@SerializedName("situacao_sistemica")
 	private String situacaoSistemica;
-	
+
+	/**
+	 * Um valor booleano indicando se a matrícula do aluno com este vinculo é
+	 * regular
+	 * 
+	 * @since 1.1
+	 */
 	@SerializedName("matricula_regular")
 	private boolean matriculaRegular;
-	
+
+	/**
+	 * A linha de pesquisa do aluno com este vinculo
+	 * 
+	 * @since 1.1
+	 */
 	@SerializedName("linha_pesquisa")
 	private String linhaPesquisa;
-	
-	@SerializedName("curriculo_lattes")
-	private String curriculoLattes;
 
-	public String getMatricula() {
-		return matricula;
-	}
-
-	public String getNome() {
-		return nome;
+	private VinculoAlunoSUAP() {
 	}
 
 	public String getCurso() {
 		return curso;
-	}
-
-	public String getCampus() {
-		return campus;
 	}
 
 	public String getSituacao() {
@@ -72,10 +97,6 @@ public class VinculoAlunoSUAP {
 		return linhaPesquisa;
 	}
 
-	public String getCurriculoLattes() {
-		return curriculoLattes;
-	}
-
 	@Override
 	public String toString() {
 		return "Vinculo [matricula=" + matricula + ", nome=" + nome + ", curso=" + curso + ", campus=" + campus
@@ -84,5 +105,4 @@ public class VinculoAlunoSUAP {
 				+ ", linhaPesquisa=" + linhaPesquisa + ", curriculoLattes=" + curriculoLattes + "]";
 	}
 
-	
 }

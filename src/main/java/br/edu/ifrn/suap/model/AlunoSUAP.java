@@ -1,6 +1,6 @@
 package br.edu.ifrn.suap.model;
 
-import br.edu.ifrn.suap.ClienteSUAP;
+import java.util.Arrays;
 
 /**
  * Classe modelo de um usuário do SUAP com vinculo do tipo Aluno
@@ -14,6 +14,8 @@ public class AlunoSUAP extends UsuarioSUAP {
 	/**
 	 * Vinculo do aluno com o SUAP
 	 * 
+	 * @see VinculoAlunoSUAP
+	 * 
 	 * @since 1.1
 	 */
 	private VinculoAlunoSUAP vinculo;
@@ -25,11 +27,7 @@ public class AlunoSUAP extends UsuarioSUAP {
 	 */
 	private CursoSUAP curso;
 
-	/**
-	 * Construtor que recebe um {@link ClienteSUAP} e o setta
-	 */
-	public AlunoSUAP(ClienteSUAP suapClient) {
-		super(suapClient);
+	private AlunoSUAP() {
 	}
 
 	/**
@@ -52,6 +50,15 @@ public class AlunoSUAP extends UsuarioSUAP {
 
 	public VinculoAlunoSUAP getVinculo() {
 		return vinculo;
+	}
+
+	@Override
+	public String toString() {
+		return "AlunoSUAP [curso=" + curso + ", suapId=" + suapId + ", matricula=" + matricula + ", nomeUsual="
+				+ nomeUsual + ", CPF=" + CPF + ", RG=" + RG + ", filiacao=" + Arrays.toString(filiacao)
+				+ ", dataDeNascimento=" + dataDeNascimento + ", naturalidade=" + naturalidade + ", tipoSanguineo="
+				+ tipoSanguineo + ", email=" + email + ", urlFoto=" + urlFoto + ", urlFotoGrande=" + urlFotoGrande
+				+ ", tipoVinculo=" + tipoVinculo + "]";
 	}
 
 }

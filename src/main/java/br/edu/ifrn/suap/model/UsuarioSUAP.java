@@ -1,6 +1,7 @@
 package br.edu.ifrn.suap.model;
 
 import java.util.Arrays;
+import java.util.Date;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -43,6 +44,7 @@ public class UsuarioSUAP {
 	 * 
 	 * @since 1.1
 	 */
+	@SerializedName("cpf")
 	protected String CPF;
 
 	/**
@@ -50,6 +52,7 @@ public class UsuarioSUAP {
 	 * 
 	 * @since 1.1
 	 */
+	@SerializedName("rg")
 	protected String RG;
 
 	/**
@@ -59,14 +62,13 @@ public class UsuarioSUAP {
 	 */
 	protected String[] filiacao;
 
-
 	/**
 	 * Data de nascimento em {@link String} deste usuário
 	 * 
 	 * @since 1.1
 	 */
 	@SerializedName("data_nascimento")
-	protected String dataDeNascimento;
+	protected Date dataDeNascimento;
 
 	/**
 	 * Naturalidade deste usuário
@@ -83,23 +85,53 @@ public class UsuarioSUAP {
 	@SerializedName("tipo_sanguineo")
 	protected String tipoSanguineo;
 
+	/**
+	 * Email academico deste usuário
+	 * 
+	 * @since 1.0
+	 */
 	protected String email;
 
+	/**
+	 * URL da foto (75x100) deste usuário no servidor do SUAP
+	 * 
+	 * @since 1.0
+	 */
 	@SerializedName("url_foto_75x100")
 	protected String urlFoto;
 
+	/**
+	 * URL da foto (150x200) deste usuário no servidor do SUAP
+	 * 
+	 * @since 1.1
+	 */
 	@SerializedName("url_foto_150x200")
 	protected String urlFotoGrande;
 
+	/**
+	 * {@link String} com o tipo de vinculo que este usuário possui com o SUAP
+	 * 
+	 * @since 1.0
+	 */
 	@SerializedName("tipo_vinculo")
 	protected String tipoVinculo;
 
+	/**
+	 * O cliente deste usuário com o SUAP, onde o token se encontra e por onde as
+	 * requisições são realizadas
+	 * 
+	 * @since 1.0
+	 */
 	protected ClienteSUAP clienteSUAP;
 
-	public UsuarioSUAP(ClienteSUAP clienteSUAP) {
-		this.clienteSUAP = clienteSUAP;
+	protected UsuarioSUAP() {
 	}
 
+	/**
+	 * Ajusta as URL para caminhos absolutos
+	 * 
+	 * @since 1.0
+	 */
 	public void ajustaURL() {
 		String inicio = "https://suap.ifrn.edu.br";
 		if (!this.urlFoto.startsWith(inicio)) {
@@ -146,7 +178,7 @@ public class UsuarioSUAP {
 		return filiacao;
 	}
 
-	public String getDataDeNascimento() {
+	public Date getDataDeNascimento() {
 		return dataDeNascimento;
 	}
 
@@ -166,6 +198,13 @@ public class UsuarioSUAP {
 		return clienteSUAP;
 	}
 
+	/**
+	 * Atribui o cliente SUAP se e somente se o objeto de {@link ClienteSUAP} deste
+	 * usuario está nulo
+	 * 
+	 * @param clienteSUAP O cliente a ser definido, settado
+	 * 
+	 */
 	public void defineClienteSUAP(ClienteSUAP clienteSUAP) {
 		// garante que só será atribuido uma única vez
 		if (this.clienteSUAP == null)
