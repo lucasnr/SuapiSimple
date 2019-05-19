@@ -19,6 +19,7 @@ import org.apache.http.message.BasicNameValuePair;
 
 import com.google.gson.Gson;
 
+import br.edu.ifrn.suapi.exception.CredenciaisIncorretasException;
 import br.edu.ifrn.suapi.exception.FalhaAoConectarComSUAPException;
 import br.edu.ifrn.suapi.model.CursoSUAP;
 import br.edu.ifrn.suapi.model.UsuarioSUAP;
@@ -53,14 +54,14 @@ public class ClienteSUAP {
 	 * Construtor único, que define um TOKEN e uma Autenticação realizando uma
 	 * requisição POST ao servidor do SUAP com as credenciais recebidas
 	 * 
-	 * @param matricula
-	 *            A matricula do usuário
-	 * @param senha
-	 *            A senha do SUAP deste usuário
+	 * @param matricula A matricula do usuário
+	 * @param senha     A senha do SUAP deste usuário
 	 * @throws FalhaAoConectarComSUAPException
+	 * @throws CredenciaisIncorretasException
 	 * @since 1.0
 	 */
-	public ClienteSUAP(String matricula, String senha) throws FalhaAoConectarComSUAPException {
+	public ClienteSUAP(String matricula, String senha)
+			throws FalhaAoConectarComSUAPException, CredenciaisIncorretasException {
 
 		try {
 			CloseableHttpClient httpClient = HttpClients.createDefault();
@@ -69,18 +70,25 @@ public class ClienteSUAP {
 			String atributoToken = pegaAtributoTokenDaRespostaJSON(respostaJSON);
 
 			this.TOKEN = atributoToken;
+			if (!this.isAutenticado())
+				throw new CredenciaisIncorretasException();
+
 			this.AUTH = criaStringDeAutenticacao();
 			httpClient.close();
-		} catch (Exception e) {
+		} catch (IOException e) {
 			throw new FalhaAoConectarComSUAPException(e);
 		}
+	}
+	
+	public ClienteSUAP(String token) {
+		this.TOKEN = token;
+		this.AUTH = criaStringDeAutenticacao();
 	}
 
 	/**
 	 * Retorna o atributo <strong>token</strong> do JSON recebido como parametro
 	 * 
-	 * @param respostaJSON
-	 *            Um JSON em forma de {@link String}
+	 * @param respostaJSON Um JSON em forma de {@link String}
 	 * @return O atributo <strong>token</strong> deste JSON
 	 */
 	private String pegaAtributoTokenDaRespostaJSON(String respostaJSON) {
@@ -98,12 +106,9 @@ public class ClienteSUAP {
 	 * retorna a resposta do SUAP, um JSON contendo o atributo
 	 * <strong>token</strong>
 	 * 
-	 * @param matricula
-	 *            A matricula do usuário
-	 * @param senha
-	 *            A senha do usuário
-	 * @param httpClient
-	 *            Um cliente HTTP para realizar a requisição
+	 * @param matricula  A matricula do usuário
+	 * @param senha      A senha do usuário
+	 * @param httpClient Um cliente HTTP para realizar a requisição
 	 * @return Uma {@link String} que representa um JSON com atributo único, o token
 	 * @since 1.2
 	 */
@@ -131,10 +136,8 @@ public class ClienteSUAP {
 	 * Cria uma string de autenticação com o SUAP. O padrão utilizado pelo SUAP é:
 	 * <strong>JWT <i>token</i></strong>
 	 * 
-	 * @param matricula
-	 *            A matrícula do usuário
-	 * @param senha
-	 *            a senha do usuário
+	 * @param matricula A matrícula do usuário
+	 * @param senha     a senha do usuário
 	 * @return Um objeto de {@link HttpPost} que representa uma requisição a URL de
 	 *         autenticação da API REST do SUAP
 	 * @since 1.2
@@ -152,10 +155,8 @@ public class ClienteSUAP {
 	 * Cria as credenciais de autenticação para realizar uma requisição à API REST
 	 * do SUAP
 	 * 
-	 * @param matricula
-	 *            A matrícula do usuário
-	 * @param senha
-	 *            a senha do usuário
+	 * @param matricula A matrícula do usuário
+	 * @param senha     A senha do usuário
 	 * @return Uma lista de par name e value, necessária para ser passada como
 	 *         parametros de autentição para a requisição
 	 * @since 1.2
@@ -171,8 +172,7 @@ public class ClienteSUAP {
 	 * Retorna um objeto java parametizado do cliente, sendo o seu tipo o que for
 	 * enviado como parâmetro da chamada (Aluno, Servidor)
 	 *
-	 * @param clazz
-	 *            Classe que herde de UsuarioSUAP
+	 * @param clazz Classe que herde de UsuarioSUAP
 	 * @return AlunoSUAP ou ServidorSUAP
 	 * @since 1.1
 	 */
@@ -196,8 +196,7 @@ public class ClienteSUAP {
 	 * Faz uma requisição ao banco de dados do SUAP e retorna um objeto java de
 	 * Curso
 	 * 
-	 * @param codigo
-	 *            O codigo do curso no SUAP
+	 * @param codigo O codigo do curso no SUAP
 	 * @return O objeto de CursoSUAP
 	 */
 	public final CursoSUAP getCurso(String codigo) {
@@ -212,8 +211,7 @@ public class ClienteSUAP {
 	 * Faz uma requisição do tipo GET à alguma URL
 	 * 
 	 * @since 1.0
-	 * @param url
-	 *            URL à qual se deseja fazer uma requisição GET
+	 * @param url URL à qual se deseja fazer uma requisição GET
 	 * @return A {@link String} contendo a resposta, em JSON, da requisição
 	 */
 	protected String doGet(String url) {
@@ -252,7 +250,7 @@ public class ClienteSUAP {
 	public boolean isAutenticado() {
 		return this.TOKEN != null;
 	}
-	
+
 	public String getTOKEN() {
 		return TOKEN;
 	}
