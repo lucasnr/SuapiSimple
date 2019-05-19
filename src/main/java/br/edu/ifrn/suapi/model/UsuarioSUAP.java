@@ -122,7 +122,7 @@ public class UsuarioSUAP {
 	 * 
 	 * @since 1.0
 	 */
-	protected ClienteSUAP clienteSUAP;
+	protected transient ClienteSUAP clienteSUAP;
 
 	protected UsuarioSUAP() {
 	}
