@@ -94,7 +94,8 @@ public final class ClienteSUAP {
 
 	public ClienteSUAP(String token) throws TokenInvalidoException, FalhaAoConectarComSUAPException {
 		try {
-			if (isTokenValido(token)) {				
+			boolean isValido = isTokenValido(token);
+			if (! isValido) {				
 				throw new TokenInvalidoException();
 			}
 		} catch (IOException e) {
