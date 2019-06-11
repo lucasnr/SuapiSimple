@@ -2,6 +2,10 @@ package br.edu.ifrn.suapi.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
+
 /**
  * Classe modelo que representa um vinculo de um aluno com o SUAP
  * 
@@ -9,7 +13,16 @@ import com.google.gson.annotations.SerializedName;
  * @since 1.1
  * @version 1.1
  */
-public class VinculoAlunoSUAP extends VinculoSUAP {
+
+@Getter
+@ToString
+@EqualsAndHashCode(callSuper=false)
+public final class VinculoAlunoSUAP extends VinculoSUAP {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * O nome do curso do aluno com este vinculo
@@ -65,44 +78,4 @@ public class VinculoAlunoSUAP extends VinculoSUAP {
 	 */
 	@SerializedName("linha_pesquisa")
 	private String linhaPesquisa;
-
-	private VinculoAlunoSUAP() {
-	}
-
-	public String getCurso() {
-		return curso;
-	}
-
-	public String getSituacao() {
-		return situacao;
-	}
-
-	public String getCotaSISTEC() {
-		return cotaSISTEC;
-	}
-
-	public String getCotaMEC() {
-		return cotaMEC;
-	}
-
-	public String getSituacaoSistemica() {
-		return situacaoSistemica;
-	}
-
-	public boolean isMatriculaRegular() {
-		return matriculaRegular;
-	}
-
-	public String getLinhaPesquisa() {
-		return linhaPesquisa;
-	}
-
-	@Override
-	public String toString() {
-		return "Vinculo [matricula=" + matricula + ", nome=" + nome + ", curso=" + curso + ", campus=" + campus
-				+ ", situacao=" + situacao + ", cotaSistec=" + cotaSISTEC + ", cotaMec=" + cotaMEC
-				+ ", situacaoSistemica=" + situacaoSistemica + ", matriculaRegular=" + matriculaRegular
-				+ ", linhaPesquisa=" + linhaPesquisa + ", curriculoLattes=" + curriculoLattes + "]";
-	}
-
 }

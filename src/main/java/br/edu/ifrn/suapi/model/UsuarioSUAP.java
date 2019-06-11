@@ -1,11 +1,14 @@
 package br.edu.ifrn.suapi.model;
 
-import java.util.Arrays;
+import java.io.Serializable;
 import java.util.Date;
 
 import com.google.gson.annotations.SerializedName;
 
 import br.edu.ifrn.suapi.ClienteSUAP;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
 
 /**
  * Classe pai de todos os usuários com algum vinculo no SUAP
@@ -14,7 +17,16 @@ import br.edu.ifrn.suapi.ClienteSUAP;
  * @since 1.0
  * @version 1.1
  */
-public class UsuarioSUAP {
+
+@Getter
+@ToString
+@EqualsAndHashCode
+public class UsuarioSUAP implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * ID único deste usuário no SUAP
@@ -142,82 +154,16 @@ public class UsuarioSUAP {
 		}
 	}
 
-	public Integer getSuapId() {
-		return suapId;
-	}
-
-	public String getMatricula() {
-		return matricula;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public String getNomeUsual() {
-		return nomeUsual;
-	}
-
-	public String getUrlFoto() {
-		return urlFoto;
-	}
-
-	public String getTipoVinculo() {
-		return tipoVinculo;
-	}
-
-	public String getCPF() {
-		return CPF;
-	}
-
-	public String getRG() {
-		return RG;
-	}
-
-	public String[] getFiliacao() {
-		return filiacao;
-	}
-
-	public Date getDataDeNascimento() {
-		return dataDeNascimento;
-	}
-
-	public String getNaturalidade() {
-		return naturalidade;
-	}
-
-	public String getTipoSanguineo() {
-		return tipoSanguineo;
-	}
-
-	public String getUrlFotoGrande() {
-		return urlFotoGrande;
-	}
-
-	public ClienteSUAP getClienteSUAP() {
-		return clienteSUAP;
-	}
-
 	/**
 	 * Atribui o cliente SUAP se e somente se o objeto de {@link ClienteSUAP} deste
 	 * usuario está nulo
 	 * 
 	 * @param clienteSUAP O cliente a ser definido, settado
-	 * 
 	 */
 	public void defineClienteSUAP(ClienteSUAP clienteSUAP) {
 		// garante que só será atribuido uma única vez
 		if (this.clienteSUAP == null)
 			this.clienteSUAP = clienteSUAP;
-	}
-
-	@Override
-	public String toString() {
-		return "UsuarioSUAP [suapId=" + suapId + ", matricula=" + matricula + ", nomeUsual=" + nomeUsual + ", cpf="
-				+ CPF + ", rg=" + RG + ", filiacao=" + Arrays.toString(filiacao) + ", dataNascimento="
-				+ dataDeNascimento + ", naturalidade=" + naturalidade + ", tipoSanguineo=" + tipoSanguineo + ", email="
-				+ email + ", urlFoto=" + urlFoto + ", urlFotoGrande=" + urlFotoGrande + ", tipoVinculo=" + tipoVinculo
-				+ "]";
 	}
 
 }

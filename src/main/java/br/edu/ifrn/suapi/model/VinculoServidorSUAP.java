@@ -1,8 +1,10 @@
 package br.edu.ifrn.suapi.model;
 
-import java.util.Arrays;
-
 import com.google.gson.annotations.SerializedName;
+
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
 
 /**
  * Classe modelo que representa um vinculo de um servidor com o SUAP
@@ -11,8 +13,17 @@ import com.google.gson.annotations.SerializedName;
  * @since 1.1
  * @version 1.1
  */
-public class VinculoServidorSUAP extends VinculoSUAP{
 
+@Getter
+@ToString
+@EqualsAndHashCode(callSuper=false)
+public final class VinculoServidorSUAP extends VinculoSUAP{
+
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * O cargo do servidor com este vinculo
@@ -90,57 +101,5 @@ public class VinculoServidorSUAP extends VinculoSUAP{
 	 */
 	@SerializedName("url_foto_75x100")
 	private String urlFoto;
-
-	private VinculoServidorSUAP() {
-	}
-
-	public String getCargo() {
-		return cargo;
-	}
-
-	public String getSetorSUAP() {
-		return setorSUAP;
-	}
-
-	public String getSetorSIAPE() {
-		return setorSIAPE;
-	}
-
-	public String getJornadaTrabalho() {
-		return jornadaTrabalho;
-	}
-
-	public String[] getFuncao() {
-		return funcao;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public String[] getTelefonesInstitucionais() {
-		return telefonesInstitucionais;
-	}
-
-	public String getCategoria() {
-		return categoria;
-	}
-
-	public String getDisciplinaIngresso() {
-		return disciplinaIngresso;
-	}
-
-	public String getUrlFoto() {
-		return urlFoto;
-	}
-
-	@Override
-	public String toString() {
-		return "VinculoServidorSUAP [matricula=" + matricula + ", nome=" + nome + ", cargo=" + cargo + ", setorSUAP="
-				+ setorSUAP + ", setorSiape=" + setorSIAPE + ", jornadaTrabalho=" + jornadaTrabalho + ", funcao="
-				+ Arrays.toString(funcao) + ", campus=" + campus + ", email=" + email + ", telefonesInstitucionais="
-				+ Arrays.toString(telefonesInstitucionais) + ", categoria=" + categoria + ", disciplinaIngresso="
-				+ disciplinaIngresso + ", urlFoto=" + urlFoto + ", curriculoLattes=" + curriculoLattes + "]";
-	}
 
 }

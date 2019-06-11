@@ -1,11 +1,20 @@
 package br.edu.ifrn.suapi.model;
 
-public class TokenSUAP {
+import java.io.Serializable;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
+
+@Getter
+@ToString
+@EqualsAndHashCode
+public final class TokenSUAP implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private String token;
-
-	public String getToken() {
-		return token;
-	}
-
 }

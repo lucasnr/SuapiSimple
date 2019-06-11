@@ -1,6 +1,8 @@
 package br.edu.ifrn.suapi.model;
 
-import java.util.Arrays;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
 
 /**
  * Classe modelo de um usuário do SUAP com vinculo do tipo Aluno
@@ -9,7 +11,16 @@ import java.util.Arrays;
  * @since 1.1
  * @version 1.1
  */
-public class AlunoSUAP extends UsuarioSUAP {
+
+@ToString
+@EqualsAndHashCode(callSuper=false)
+public final class AlunoSUAP extends UsuarioSUAP{
+
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * Vinculo do aluno com o SUAP
@@ -18,7 +29,7 @@ public class AlunoSUAP extends UsuarioSUAP {
 	 * 
 	 * @since 1.1
 	 */
-	private VinculoAlunoSUAP vinculo;
+	@Getter private VinculoAlunoSUAP vinculo;
 
 	/**
 	 * Curso ao qual este aluno pertence
@@ -26,9 +37,6 @@ public class AlunoSUAP extends UsuarioSUAP {
 	 * @since 1.1
 	 */
 	private CursoSUAP curso;
-
-	private AlunoSUAP() {
-	}
 
 	/**
 	 * Retorna o curso do aluno, caso o atributo seja nulo, o mesmo será buscado
@@ -47,18 +55,4 @@ public class AlunoSUAP extends UsuarioSUAP {
 
 		return this.curso;
 	}
-
-	public VinculoAlunoSUAP getVinculo() {
-		return vinculo;
-	}
-
-	@Override
-	public String toString() {
-		return "AlunoSUAP [curso=" + curso + ", suapId=" + suapId + ", matricula=" + matricula + ", nomeUsual="
-				+ nomeUsual + ", CPF=" + CPF + ", RG=" + RG + ", filiacao=" + Arrays.toString(filiacao)
-				+ ", dataDeNascimento=" + dataDeNascimento + ", naturalidade=" + naturalidade + ", tipoSanguineo="
-				+ tipoSanguineo + ", email=" + email + ", urlFoto=" + urlFoto + ", urlFotoGrande=" + urlFotoGrande
-				+ ", tipoVinculo=" + tipoVinculo + "]";
-	}
-
 }

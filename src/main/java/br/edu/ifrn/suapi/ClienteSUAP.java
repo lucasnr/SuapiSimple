@@ -28,6 +28,7 @@ import br.edu.ifrn.suapi.model.ServidorSUAP;
 import br.edu.ifrn.suapi.model.TokenSUAP;
 import br.edu.ifrn.suapi.model.UsuarioSUAP;
 import br.edu.ifrn.suapi.util.JSONHandler;
+import lombok.Getter;
 
 /**
  * Classe que representa um cliente do SUAP. Esta classe é responsável por fazer
@@ -54,7 +55,7 @@ public final class ClienteSUAP {
 	 * 
 	 * @since 1.0
 	 */
-	private final String TOKEN;
+	@Getter private final String TOKEN;
 
 	/**
 	 * A autenticação deste cliente, usada para realizar requisições ao SUAP
@@ -277,9 +278,4 @@ public final class ClienteSUAP {
 	public boolean isAutenticado() {
 		return this.TOKEN != null;
 	}
-
-	public String getTOKEN() {
-		return TOKEN;
-	}
-
 }

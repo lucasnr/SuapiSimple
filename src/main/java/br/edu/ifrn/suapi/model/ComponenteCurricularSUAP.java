@@ -1,5 +1,11 @@
 package br.edu.ifrn.suapi.model;
 
+import java.io.Serializable;
+
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
+
 /**
  * Classe modelo de um componente curricular ou disciplina do SUAP
  * 
@@ -7,7 +13,16 @@ package br.edu.ifrn.suapi.model;
  * @since 1.0
  * @version 1.0
  */
-public class ComponenteCurricularSUAP {
+
+@Getter
+@ToString
+@EqualsAndHashCode
+public final class ComponenteCurricularSUAP implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * O nome deste componente curricular
@@ -29,25 +44,5 @@ public class ComponenteCurricularSUAP {
 	 * @since 1.0
 	 */
 	private String sigla;
-	
-	private ComponenteCurricularSUAP() {
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public String getCodigo() {
-		return codigo;
-	}
-
-	public String getSigla() {
-		return sigla;
-	}
-
-	@Override
-	public String toString() {
-		return "ComponenteCurricular [nome=" + nome + ", codigo=" + codigo + ", sigla=" + sigla + "]";
-	}
 
 }

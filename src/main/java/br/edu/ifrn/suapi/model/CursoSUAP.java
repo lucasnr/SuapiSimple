@@ -1,9 +1,13 @@
 package br.edu.ifrn.suapi.model;
 
-import java.util.Collections;
+import java.io.Serializable;
 import java.util.List;
 
 import com.google.gson.annotations.SerializedName;
+
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
 
 /**
  * Classe modelo de um curso do SUAP
@@ -12,7 +16,16 @@ import com.google.gson.annotations.SerializedName;
  * @version 1.0
  * @since 1.0
  */
-public class CursoSUAP {
+
+@Getter
+@ToString
+@EqualsAndHashCode
+public final class CursoSUAP implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * O código deste curso no SUAP
@@ -81,51 +94,4 @@ public class CursoSUAP {
 	 */
 	@SerializedName("componentes_curriculares")
 	private List<ComponenteCurricularSUAP> componentesCurriculares;
-	
-	private CursoSUAP() {
-	}
-
-	public String getCodigo() {
-		return codigo;
-	}
-
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public String getDiretoria() {
-		return diretoria;
-	}
-
-	public String getCargaHoraria() {
-		return cargaHoraria;
-	}
-
-	public String getNaturezaParticipacao() {
-		return naturezaParticipacao;
-	}
-
-	public String getEixo() {
-		return eixo;
-	}
-
-	public String getModalidade() {
-		return modalidade;
-	}
-
-	public String getCoordenador() {
-		return coordenador;
-	}
-
-	public List<ComponenteCurricularSUAP> getComponentesCurriculares() {
-		return Collections.unmodifiableList(componentesCurriculares);
-	}
-
-	@Override
-	public String toString() {
-		return "CursoSUAP [codigo=" + codigo + ", descricao=" + descricao + ", diretoria=" + diretoria
-				+ ", cargaHoraria=" + cargaHoraria + ", naturezaParticipacao=" + naturezaParticipacao + ", eixo=" + eixo
-				+ ", modalidade=" + modalidade + ", coordenador=" + coordenador + "]";
-	}
-
 }

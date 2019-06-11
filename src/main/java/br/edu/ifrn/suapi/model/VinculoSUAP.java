@@ -1,6 +1,12 @@
 package br.edu.ifrn.suapi.model;
 
+import java.io.Serializable;
+
 import com.google.gson.annotations.SerializedName;
+
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
 
 /**
  * Classe pai de todos os tipos de vinculo com o SUAP
@@ -9,7 +15,17 @@ import com.google.gson.annotations.SerializedName;
  * @since 1.1
  * @version 1.1
  */
-public class VinculoSUAP {
+
+@Getter
+@ToString
+@EqualsAndHashCode
+public class VinculoSUAP implements Serializable{
+
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 
 	/**
@@ -43,28 +59,6 @@ public class VinculoSUAP {
 	protected String curriculoLattes;
 
 	protected VinculoSUAP() {
-	}
-
-	public String getMatricula() {
-		return matricula;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public String getCampus() {
-		return campus;
-	}
-
-	public String getCurriculoLattes() {
-		return curriculoLattes;
-	}
-
-	@Override
-	public String toString() {
-		return "VinculoSUAP [matricula=" + matricula + ", nome=" + nome + ", campus=" + campus + ", curriculoLattes="
-				+ curriculoLattes + "]";
 	}
 
 }
