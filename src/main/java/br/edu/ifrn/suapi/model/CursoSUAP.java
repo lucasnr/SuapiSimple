@@ -18,7 +18,7 @@ import lombok.ToString;
  */
 
 @Getter
-@ToString
+@ToString(exclude= {"componentesCurriculares"})
 @EqualsAndHashCode
 public final class CursoSUAP implements Serializable{
 

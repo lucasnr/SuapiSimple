@@ -8,12 +8,12 @@ import lombok.ToString;
  * Classe modelo de um usuário do SUAP com vinculo do tipo Servidor
  * 
  * @author Lucas do Nascimento Ribeiro
- * @since 1.1
- * @version 1.1
+ * @since 1.0
+ * @version 1.0
  */
 
 @Getter
-@ToString
+@ToString(callSuper=true, exclude={"vinculo"})
 @EqualsAndHashCode(callSuper=false)
 public final class ServidorSUAP extends UsuarioSUAP {
 
@@ -26,7 +26,7 @@ public final class ServidorSUAP extends UsuarioSUAP {
 	 * O vinculo deste servidor com o SUAP
 	 * 
 	 * @see VinculoServidorSUAP
-	 * @since 1.1
+	 * @since 1.0
 	 */
 	private VinculoServidorSUAP vinculo;
 }

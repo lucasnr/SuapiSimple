@@ -8,11 +8,11 @@ import lombok.ToString;
  * Classe modelo de um usuário do SUAP com vinculo do tipo Aluno
  * 
  * @author Lucas do Nascimento Ribeiro
- * @since 1.1
- * @version 1.1
+ * @since 1.0
+ * @version 1.0
  */
 
-@ToString
+@ToString(callSuper=true, exclude= {"vinculo", "curso"})
 @EqualsAndHashCode(callSuper=false)
 public final class AlunoSUAP extends UsuarioSUAP{
 
@@ -27,14 +27,14 @@ public final class AlunoSUAP extends UsuarioSUAP{
 	 * 
 	 * @see VinculoAlunoSUAP
 	 * 
-	 * @since 1.1
+	 * @since 1.0
 	 */
 	@Getter private VinculoAlunoSUAP vinculo;
 
 	/**
 	 * Curso ao qual este aluno pertence
 	 * 
-	 * @since 1.1
+	 * @since 1.0
 	 */
 	private CursoSUAP curso;
 
@@ -44,6 +44,7 @@ public final class AlunoSUAP extends UsuarioSUAP{
 	 * matrícula
 	 * 
 	 * @return O {@link CursoSUAP} deste aluno
+	 * @since 1.0
 	 */
 	public CursoSUAP getCurso() {
 		if (this.curso == null) {

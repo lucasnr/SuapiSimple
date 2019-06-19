@@ -10,12 +10,12 @@ import lombok.ToString;
  * Classe modelo que representa um vinculo de um servidor com o SUAP
  * 
  * @author Lucas do Nascimento Ribeiro
- * @since 1.1
- * @version 1.1
+ * @since 1.0
+ * @version 1.0
  */
 
 @Getter
-@ToString
+@ToString(callSuper=true)
 @EqualsAndHashCode(callSuper=false)
 public final class VinculoServidorSUAP extends VinculoSUAP{
 
@@ -28,14 +28,14 @@ public final class VinculoServidorSUAP extends VinculoSUAP{
 	/**
 	 * O cargo do servidor com este vinculo
 	 * 
-	 * @since 1.1
+	 * @since 1.0
 	 */
 	private String cargo;
 
 	/**
 	 * O setor do servidor com este vinculo no SUAP
 	 * 
-	 * @since 1.1
+	 * @since 1.0
 	 */
 	@SerializedName("setor_suap")
 	private String setorSUAP;
@@ -43,7 +43,7 @@ public final class VinculoServidorSUAP extends VinculoSUAP{
 	/**
 	 * O setor do servidor com este vinculo no SIAPE
 	 * 
-	 * @since 1.1
+	 * @since 1.0
 	 */
 	@SerializedName("setor_siape")
 	private String setorSIAPE;
@@ -51,7 +51,7 @@ public final class VinculoServidorSUAP extends VinculoSUAP{
 	/**
 	 * A jornada de trabalho do servidor com este vinculo
 	 * 
-	 * @since 1.1
+	 * @since 1.0
 	 */
 	@SerializedName("jornada_trabalho")
 	private String jornadaTrabalho;
@@ -60,21 +60,21 @@ public final class VinculoServidorSUAP extends VinculoSUAP{
 	/**
 	 * A função do servidor com este vinculo
 	 * 
-	 * @since 1.1
+	 * @since 1.0
 	 */
 	private String[] funcao;
 
 	/**
 	 * O e-mail do servidor com este vinculo
 	 * 
-	 * @since 1.1
+	 * @since 1.0
 	 */
 	private String email;
 
 	/**
 	 * Os telefones institucionais do servidor com este vinculo
 	 * 
-	 * @since 1.1
+	 * @since 1.0
 	 */
 	@SerializedName("telefones_institucionais")
 	private String[] telefonesInstitucionais;
@@ -82,14 +82,14 @@ public final class VinculoServidorSUAP extends VinculoSUAP{
 	/**
 	 * A categoria do servidor com este vinculo
 	 * 
-	 * @since 1.1
+	 * @since 1.0
 	 */
 	private String categoria;
 
 	/**
 	 * A disciplina de ingresso do servidor com este vinculo
 	 * 
-	 * @since 1.1
+	 * @since 1.0
 	 */
 	@SerializedName("disciplina_ingresso")
 	private String disciplinaIngresso;
@@ -97,7 +97,7 @@ public final class VinculoServidorSUAP extends VinculoSUAP{
 	/**
 	 * A URL da foto (75x100) no SUAP do servidor com este vinculo
 	 * 
-	 * @since 1.1
+	 * @since 1.0
 	 */
 	@SerializedName("url_foto_75x100")
 	private String urlFoto;

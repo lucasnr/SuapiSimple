@@ -12,8 +12,8 @@ import lombok.ToString;
  * Classe pai de todos os tipos de vinculo com o SUAP
  * 
  * @author Lucas do Nascimento Ribeiro
- * @since 1.1
- * @version 1.1
+ * @since 1.0
+ * @version 1.0
  */
 
 @Getter
@@ -31,7 +31,7 @@ public class VinculoSUAP implements Serializable{
 	/**
 	 * A matrícula do usuário com este vinculo com o SUAP
 	 * 
-	 * @since 1.1
+	 * @since 1.0
 	 */
 	protected String matricula;
 	
@@ -39,21 +39,21 @@ public class VinculoSUAP implements Serializable{
 	/**
 	 * O nome do usuário com este vinculo com o SUAP
 	 * 
-	 * @since 1.1
+	 * @since 1.0
 	 */
 	protected String nome;
 
 	/**
 	 * O campus deste vinculo com o SUAP
 	 * 
-	 * @since 1.1
+	 * @since 1.0
 	 */
 	protected String campus;
 
 	/**
 	 * O curriculo lattes do usuário com este vinculo com o SUAP
 	 * 
-	 * @since 1.1
+	 * @since 1.0
 	 */
 	@SerializedName("curriculo_lattes")
 	protected String curriculoLattes;

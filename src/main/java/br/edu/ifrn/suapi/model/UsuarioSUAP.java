@@ -15,11 +15,11 @@ import lombok.ToString;
  * 
  * @author Lucas do Nascimento Ribeiro
  * @since 1.0
- * @version 1.1
+ * @version 1.0
  */
 
 @Getter
-@ToString
+@ToString(exclude= {"clienteSUAP"})
 @EqualsAndHashCode
 public class UsuarioSUAP implements Serializable {
 
@@ -54,7 +54,7 @@ public class UsuarioSUAP implements Serializable {
 	/**
 	 * CPF deste usuário
 	 * 
-	 * @since 1.1
+	 * @since 1.0
 	 */
 	@SerializedName("cpf")
 	protected String CPF;
@@ -62,7 +62,7 @@ public class UsuarioSUAP implements Serializable {
 	/**
 	 * RG deste usuário
 	 * 
-	 * @since 1.1
+	 * @since 1.0
 	 */
 	@SerializedName("rg")
 	protected String RG;
@@ -70,14 +70,14 @@ public class UsuarioSUAP implements Serializable {
 	/**
 	 * Array de {@link String} contendo a filiação deste usuário
 	 * 
-	 * @since 1.1
+	 * @since 1.0
 	 */
 	protected String[] filiacao;
 
 	/**
 	 * Data de nascimento em {@link String} deste usuário
 	 * 
-	 * @since 1.1
+	 * @since 1.0
 	 */
 	@SerializedName("data_nascimento")
 	protected Date dataDeNascimento;
@@ -85,14 +85,14 @@ public class UsuarioSUAP implements Serializable {
 	/**
 	 * Naturalidade deste usuário
 	 * 
-	 * @since 1.1
+	 * @since 1.0
 	 */
 	protected String naturalidade;
 
 	/**
 	 * Tipo sanguíneo deste usuário
 	 * 
-	 * @since 1.1
+	 * @since 1.0
 	 */
 	@SerializedName("tipo_sanguineo")
 	protected String tipoSanguineo;
@@ -115,7 +115,7 @@ public class UsuarioSUAP implements Serializable {
 	/**
 	 * URL da foto (150x200) deste usuário no servidor do SUAP
 	 * 
-	 * @since 1.1
+	 * @since 1.0
 	 */
 	@SerializedName("url_foto_150x200")
 	protected String urlFotoGrande;
