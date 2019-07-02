@@ -7,8 +7,8 @@ import br.edu.ifrn.suapi.ClienteSUAP;
  * a conexão não possa ser estabelecida
  * 
  * @author Lucas do Nascimento Ribeiro
- * @since 1.2
- * @version 1.2
+ * @since 1.0
+ * @version 1.0
  */
 public class FalhaAoConectarComSUAPException extends Exception {
 
@@ -20,7 +20,7 @@ public class FalhaAoConectarComSUAPException extends Exception {
 	/**
 	 * Exceção pai desta exceção
 	 * 
-	 * @since 1.2
+	 * @since 1.0
 	 */
 	private Exception parentException;
 
