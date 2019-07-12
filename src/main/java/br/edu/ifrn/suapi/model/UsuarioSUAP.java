@@ -3,7 +3,7 @@ package br.edu.ifrn.suapi.model;
 import java.io.Serializable;
 import java.util.Date;
 
-import com.google.gson.annotations.SerializedName;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import br.edu.ifrn.suapi.ClienteSUAP;
 import lombok.EqualsAndHashCode;
@@ -33,7 +33,7 @@ public class UsuarioSUAP implements Serializable {
 	 * 
 	 * @since 1.0
 	 */
-	@SerializedName("id")
+	@JsonProperty("id")
 	protected Integer suapId;
 
 	/**
@@ -48,7 +48,7 @@ public class UsuarioSUAP implements Serializable {
 	 * 
 	 * @since 1.0
 	 */
-	@SerializedName("nome_usual")
+	@JsonProperty("nome_usual")
 	protected String nomeUsual;
 
 	/**
@@ -56,7 +56,7 @@ public class UsuarioSUAP implements Serializable {
 	 * 
 	 * @since 1.0
 	 */
-	@SerializedName("cpf")
+	@JsonProperty("cpf")
 	protected String CPF;
 
 	/**
@@ -64,7 +64,7 @@ public class UsuarioSUAP implements Serializable {
 	 * 
 	 * @since 1.0
 	 */
-	@SerializedName("rg")
+	@JsonProperty("rg")
 	protected String RG;
 
 	/**
@@ -79,7 +79,7 @@ public class UsuarioSUAP implements Serializable {
 	 * 
 	 * @since 1.0
 	 */
-	@SerializedName("data_nascimento")
+	@JsonProperty("data_nascimento")
 	protected Date dataDeNascimento;
 
 	/**
@@ -94,7 +94,7 @@ public class UsuarioSUAP implements Serializable {
 	 * 
 	 * @since 1.0
 	 */
-	@SerializedName("tipo_sanguineo")
+	@JsonProperty("tipo_sanguineo")
 	protected String tipoSanguineo;
 
 	/**
@@ -109,7 +109,7 @@ public class UsuarioSUAP implements Serializable {
 	 * 
 	 * @since 1.0
 	 */
-	@SerializedName("url_foto_75x100")
+	@JsonProperty("url_foto_75x100")
 	protected String urlFoto;
 
 	/**
@@ -117,7 +117,7 @@ public class UsuarioSUAP implements Serializable {
 	 * 
 	 * @since 1.0
 	 */
-	@SerializedName("url_foto_150x200")
+	@JsonProperty("url_foto_150x200")
 	protected String urlFotoGrande;
 
 	/**
@@ -125,7 +125,7 @@ public class UsuarioSUAP implements Serializable {
 	 * 
 	 * @since 1.0
 	 */
-	@SerializedName("tipo_vinculo")
+	@JsonProperty("tipo_vinculo")
 	protected String tipoVinculo;
 
 	/**

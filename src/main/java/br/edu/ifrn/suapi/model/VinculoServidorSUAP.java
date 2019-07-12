@@ -1,6 +1,6 @@
 package br.edu.ifrn.suapi.model;
 
-import com.google.gson.annotations.SerializedName;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -37,7 +37,7 @@ public final class VinculoServidorSUAP extends VinculoSUAP{
 	 * 
 	 * @since 1.0
 	 */
-	@SerializedName("setor_suap")
+	@JsonProperty("setor_suap")
 	private String setorSUAP;
 
 	/**
@@ -45,7 +45,7 @@ public final class VinculoServidorSUAP extends VinculoSUAP{
 	 * 
 	 * @since 1.0
 	 */
-	@SerializedName("setor_siape")
+	@JsonProperty("setor_siape")
 	private String setorSIAPE;
 
 	/**
@@ -53,7 +53,7 @@ public final class VinculoServidorSUAP extends VinculoSUAP{
 	 * 
 	 * @since 1.0
 	 */
-	@SerializedName("jornada_trabalho")
+	@JsonProperty("jornada_trabalho")
 	private String jornadaTrabalho;
 
 
@@ -76,7 +76,7 @@ public final class VinculoServidorSUAP extends VinculoSUAP{
 	 * 
 	 * @since 1.0
 	 */
-	@SerializedName("telefones_institucionais")
+	@JsonProperty("telefones_institucionais")
 	private String[] telefonesInstitucionais;
 
 	/**
@@ -91,7 +91,7 @@ public final class VinculoServidorSUAP extends VinculoSUAP{
 	 * 
 	 * @since 1.0
 	 */
-	@SerializedName("disciplina_ingresso")
+	@JsonProperty("disciplina_ingresso")
 	private String disciplinaIngresso;
 
 	/**
@@ -99,7 +99,7 @@ public final class VinculoServidorSUAP extends VinculoSUAP{
 	 * 
 	 * @since 1.0
 	 */
-	@SerializedName("url_foto_75x100")
+	@JsonProperty("url_foto_75x100")
 	private String urlFoto;
 
 }

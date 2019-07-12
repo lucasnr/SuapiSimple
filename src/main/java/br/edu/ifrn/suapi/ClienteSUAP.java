@@ -1,17 +1,6 @@
 package br.edu.ifrn.suapi;
 
-import java.io.IOException;
-
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.methods.HttpRequestBase;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.util.EntityUtils;
-
-import com.google.gson.Gson;
+import com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException;
 
 import br.edu.ifrn.suapi.exception.CredenciaisIncorretasException;
 import br.edu.ifrn.suapi.exception.FalhaAoConectarComSUAPException;
@@ -24,54 +13,47 @@ import lombok.Getter;
 
 public final class ClienteSUAP {
 
-	private static final String PREFIX = "https://suap.ifrn.edu.br/api/v2/";
+	private static final String AUTENTICACAO_TOKEN_PATH = "autenticacao/token/";
 
-	private static final String AUTENTICACAO_TOKEN_URL = PREFIX + "autenticacao/token/";
+	private static final String MEUS_DADOS_PATH = "minhas-informacoes/meus-dados/";
 
-	private static final String MEUS_DADOS_URL = PREFIX + "minhas-informacoes/meus-dados/";
+	private static final String VALIDA_TOKEN_PATH = "autenticacao/token/verify/";
 
-	private static final String VALIDA_TOKEN_URL = PREFIX + "autenticacao/token/verify/";
-
+	private static final String CURSO_PATH = "edu/cursos/{codigo}";
+	
 	@Getter
 	private final String TOKEN;
 
 	private final String AUTH;
 
-	private final CloseableHttpClient httpClient;
-
-	private final Gson gson = new Gson();
+	private final SUAPRestClient client = new SUAPRestClient();
 
 	public ClienteSUAP(String matricula, String senha)
 			throws FalhaAoConectarComSUAPException, CredenciaisIncorretasException {
 
-		httpClient = HttpClients.createDefault();
+		TokenSUAP token = requestToken(matricula, senha);
 
-		try {
-			TokenSUAP token = requestToken(matricula, senha);
-			this.TOKEN = token.getToken();
-			if (!this.isAutenticado())
-				throw new CredenciaisIncorretasException();
-
-			this.AUTH = generateAuthentication();
-		} catch (IOException e) {
-			throw new FalhaAoConectarComSUAPException(e);
-		}
+		this.TOKEN = token.getToken();
+		this.AUTH = generateAuthentication();
+		
+		addHeaders();
 	}
 
 	public ClienteSUAP(String token) throws TokenInvalidoException, FalhaAoConectarComSUAPException {
-		httpClient = HttpClients.createDefault();
-
-		try {
-			boolean isTokenInvalido = !isTokenValido(token);
-			if (isTokenInvalido) {
-				throw new TokenInvalidoException();
-			}
-		} catch (IOException e) {
-			throw new FalhaAoConectarComSUAPException(e);
+		boolean isTokenInvalido = !isTokenValido(token);
+		if (isTokenInvalido) {
+			throw new TokenInvalidoException();
 		}
 
 		this.TOKEN = token;
 		this.AUTH = generateAuthentication();
+
+		addHeaders();
+	}
+
+	private void addHeaders() {
+		client.addHeader("X-CSRFToken", TOKEN);
+		client.addHeader("Authorization", AUTH);
 	}
 
 	public <T extends UsuarioSUAP> T getUsuario(Class<T> clazz) {
@@ -79,8 +61,7 @@ public final class ClienteSUAP {
 			return null;
 		}
 
-		String meusDados = doGet(MEUS_DADOS_URL);
-		T usuario = gson.fromJson(meusDados, clazz);
+		T usuario = client.doGet(MEUS_DADOS_PATH, clazz);
 		usuario.ajustaURL();
 		usuario.defineClienteSUAP(this);
 		return usuario;
@@ -91,25 +72,9 @@ public final class ClienteSUAP {
 			return null;
 		}
 		
-		String url = PREFIX + "edu/cursos/" + codigo;
-		String cursoJSON = doGet(url);
-		CursoSUAP curso = gson.fromJson(cursoJSON, CursoSUAP.class);
+		String uri = CURSO_PATH.replace("{codigo}", codigo);
+		CursoSUAP curso = client.doGet(uri, CursoSUAP.class);
 		return curso;
-	}
-
-	protected String doGet(String url) {
-		try {
-			HttpGet doGet = new HttpGet(url);
-			doGet.addHeader("Accept", "application/json");
-			doGet.addHeader("X-CSRFToken", TOKEN);
-			doGet.addHeader("Authorization", AUTH);
-
-			return requestAndGetResponseJSON(doGet);
-		} catch (IOException io) {
-			io.printStackTrace();
-		}
-		
-		return null;
 	}
 
 	private String generateAuthentication() {
@@ -120,42 +85,35 @@ public final class ClienteSUAP {
 		return this.TOKEN != null;
 	}
 
-	private boolean isTokenValido(String token) throws IOException {
+	private boolean isTokenValido(String token) throws FalhaAoConectarComSUAPException {
 		if (token == null || token.isEmpty()) {
 			return false;
 		}
 
-		HttpPost doPost = new HttpPost(VALIDA_TOKEN_URL);
-		StringEntity body = new StringEntity(gson.toJson(new TokenSUAP(token)));
-		doPost.setEntity(body);
-
-		String json = requestAndGetResponseJSON(doPost);
-		TokenSUAP tokenSUAP = gson.fromJson(json, TokenSUAP.class);
-
-		if (tokenSUAP == null || tokenSUAP.getToken() == null || tokenSUAP.getToken().contains("Error")) {
-			return false;
+		TokenSUAP tokenObject = new TokenSUAP(token);
+		try {
+			client.doPost(VALIDA_TOKEN_PATH, tokenObject, TokenSUAP.class);
+		} catch (Exception e) {
+			if (e.getCause() instanceof UnrecognizedPropertyException)
+				return false;
+			throw new FalhaAoConectarComSUAPException(e);
 		}
+
 		return true;
 	}
 
-	private TokenSUAP requestToken(String matricula, String senha)
-			throws ClientProtocolException, IOException {
-		HttpPost doPost = new HttpPost(AUTENTICACAO_TOKEN_URL);
-
+	private TokenSUAP requestToken(String matricula, String senha) 
+			throws CredenciaisIncorretasException, FalhaAoConectarComSUAPException {
 		CredenciaisSUAP credenciais = new CredenciaisSUAP(matricula, senha);
-		StringEntity body = new StringEntity(gson.toJson(credenciais));
-		doPost.setEntity(body);
+		try {
+			TokenSUAP token = client.doPost(AUTENTICACAO_TOKEN_PATH, credenciais, TokenSUAP.class);
+			return token;
+		} catch (Exception e) {
+			if(e.getCause() instanceof UnrecognizedPropertyException)
+				throw new CredenciaisIncorretasException();
 
-		String json = requestAndGetResponseJSON(doPost);
-		TokenSUAP token = gson.fromJson(json, TokenSUAP.class);
-		return token;
+			throw new FalhaAoConectarComSUAPException(e);
+		}
 	}
 
-	private String requestAndGetResponseJSON(HttpRequestBase doRequest)
-			throws IOException, ClientProtocolException {
-		String mediaType = "application/json";
-		doRequest.setHeader("Content-Type", mediaType);;
-		doRequest.setHeader("Accept", mediaType);;
-		return httpClient.execute(doRequest, response -> EntityUtils.toString(response.getEntity()));
-	}
 }

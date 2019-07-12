@@ -1,6 +1,6 @@
 package br.edu.ifrn.suapi.model;
 
-import com.google.gson.annotations.SerializedName;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -43,7 +43,7 @@ public final class VinculoAlunoSUAP extends VinculoSUAP {
 	 * 
 	 * @since 1.0
 	 */
-	@SerializedName("cota_sistec")
+	@JsonProperty("cota_sistec")
 	private String cotaSISTEC;
 
 	/**
@@ -51,7 +51,7 @@ public final class VinculoAlunoSUAP extends VinculoSUAP {
 	 * 
 	 * @since 1.0
 	 */
-	@SerializedName("cota_mec")
+	@JsonProperty("cota_mec")
 	private String cotaMEC;
 
 	/**
@@ -59,7 +59,7 @@ public final class VinculoAlunoSUAP extends VinculoSUAP {
 	 * 
 	 * @since 1.0
 	 */
-	@SerializedName("situacao_sistemica")
+	@JsonProperty("situacao_sistemica")
 	private String situacaoSistemica;
 
 	/**
@@ -68,7 +68,7 @@ public final class VinculoAlunoSUAP extends VinculoSUAP {
 	 * 
 	 * @since 1.0
 	 */
-	@SerializedName("matricula_regular")
+	@JsonProperty("matricula_regular")
 	private boolean matriculaRegular;
 
 	/**
@@ -76,6 +76,6 @@ public final class VinculoAlunoSUAP extends VinculoSUAP {
 	 * 
 	 * @since 1.0
 	 */
-	@SerializedName("linha_pesquisa")
+	@JsonProperty("linha_pesquisa")
 	private String linhaPesquisa;
 }

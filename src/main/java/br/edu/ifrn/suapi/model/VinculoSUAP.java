@@ -2,7 +2,7 @@ package br.edu.ifrn.suapi.model;
 
 import java.io.Serializable;
 
-import com.google.gson.annotations.SerializedName;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -55,7 +55,7 @@ public class VinculoSUAP implements Serializable{
 	 * 
 	 * @since 1.0
 	 */
-	@SerializedName("curriculo_lattes")
+	@JsonProperty("curriculo_lattes")
 	protected String curriculoLattes;
 
 	protected VinculoSUAP() {
