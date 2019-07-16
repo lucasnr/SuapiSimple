@@ -1,11 +1,13 @@
 package br.edu.ifrn.suapi.model;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import br.edu.ifrn.suapi.ClienteSUAP;
+import br.edu.ifrn.suapi.jackson.LocalDateDeserializer;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
@@ -80,7 +82,8 @@ public class UsuarioSUAP implements Serializable {
 	 * @since 1.0
 	 */
 	@JsonProperty("data_nascimento")
-	protected Date dataDeNascimento;
+	@JsonDeserialize(using = LocalDateDeserializer.class) 
+	protected LocalDate dataDeNascimento;
 
 	/**
 	 * Naturalidade deste usuário
