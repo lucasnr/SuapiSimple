@@ -35,7 +35,7 @@ public class FalhaAoConectarComSUAPException extends RuntimeException {
 
 	@Override
 	public synchronized Throwable getCause() {
-		return parentException.getCause();
+		return parentException;
 	}
 
 }
