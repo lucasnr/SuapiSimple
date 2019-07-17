@@ -6,7 +6,7 @@
 	<version>1.1</version>
 	<packaging>jar</packaging>
 
-	<name>suap</name>
+	<name>suapi-simple</name>
 	<description>Biblioteca de acesso a API do SUAP (suap.ifrn.edu.br)</description>
 	<url>https://github.com/lucasnr/suapi-simple</url>
 	
