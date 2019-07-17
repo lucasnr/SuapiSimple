@@ -3,7 +3,7 @@ package br.edu.ifrn.suapi.model;
 import java.io.Serializable;
 import java.util.List;
 
-import com.google.gson.annotations.SerializedName;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -53,7 +53,7 @@ public final class CursoSUAP implements Serializable{
 	 * 
 	 * @since 1.0
 	 */
-	@SerializedName("carga_horaria")
+	@JsonProperty("carga_horaria")
 	private String cargaHoraria;
 
 	/**
@@ -61,7 +61,7 @@ public final class CursoSUAP implements Serializable{
 	 * 
 	 * @since 1.0
 	 */
-	@SerializedName("natureza_participacao")
+	@JsonProperty("natureza_participacao")
 	private String naturezaParticipacao;
 
 	/**
@@ -92,6 +92,6 @@ public final class CursoSUAP implements Serializable{
 	 * 
 	 * @since 1.0
 	 */
-	@SerializedName("componentes_curriculares")
+	@JsonProperty("componentes_curriculares")
 	private List<ComponenteCurricularSUAP> componentesCurriculares;
 }

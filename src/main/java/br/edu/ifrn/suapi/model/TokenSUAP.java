@@ -3,13 +3,11 @@ package br.edu.ifrn.suapi.model;
 import java.io.Serializable;
 
 import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Getter
-@ToString
-@EqualsAndHashCode
+@Data
+@NoArgsConstructor
 @AllArgsConstructor
 public final class TokenSUAP implements Serializable {
 
