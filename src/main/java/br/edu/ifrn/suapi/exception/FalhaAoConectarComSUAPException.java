@@ -10,7 +10,7 @@ import br.edu.ifrn.suapi.ClienteSUAP;
  * @since 1.0
  * @version 1.0
  */
-public class FalhaAoConectarComSUAPException extends Exception {
+public class FalhaAoConectarComSUAPException extends RuntimeException {
 
 	/**
 	 * 

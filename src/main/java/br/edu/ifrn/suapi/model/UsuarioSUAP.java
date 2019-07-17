@@ -3,6 +3,7 @@ package br.edu.ifrn.suapi.model;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
@@ -21,8 +22,9 @@ import lombok.ToString;
  */
 
 @Getter
-@ToString(exclude= {"clienteSUAP"})
+@ToString(exclude = { "clienteSUAP" })
 @EqualsAndHashCode
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class UsuarioSUAP implements Serializable {
 
 	/**
@@ -82,7 +84,7 @@ public class UsuarioSUAP implements Serializable {
 	 * @since 1.0
 	 */
 	@JsonProperty("data_nascimento")
-	@JsonDeserialize(using = LocalDateDeserializer.class) 
+	@JsonDeserialize(using = LocalDateDeserializer.class)
 	protected LocalDate dataDeNascimento;
 
 	/**
